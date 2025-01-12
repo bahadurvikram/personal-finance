@@ -1,3 +1,7 @@
 personal-finance:
   type: pandas.CSVDataset
   filepath: data/01_raw/data.csv
+
+data_with_normalization:
+  type: pandas.CSVDataset
+  filepath: data/04_feature/normalized_data.csv
