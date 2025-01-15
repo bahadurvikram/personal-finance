@@ -88,7 +88,9 @@ We performed the EDA to understand the features and their relationships
 ```commandline
 kedro pipeline create dataprocessing
 ```
-![img.png](img/dataprocesing.png)
+![dataprocesing.png](img/dataprocesing.png)
+<img src="img/dataprocesing.png" alt="Example Image" width="500">
+
 
 ```commandline
 kedro pipeline create linear_regression
