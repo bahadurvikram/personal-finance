@@ -4,7 +4,7 @@
 # Documentation for this file format can be found in "Parameters"
 # Link: https://docs.kedro.org/en/0.19.10/configuration/parameters.html
 col_options:
-  variable_expenses:
+  features:
     - Groceries
     - Transport
     - Eating_Out
@@ -13,7 +13,6 @@ col_options:
     - Healthcare
     - Education
     - Miscellaneous
-  numerical_features:
     - Income
     - Age
     - Dependents
@@ -22,3 +21,12 @@ col_options:
   categorical_features:
     - Occupation
     - City_Tier
+  targets:
+    - Potential_Savings_Groceries
+    - Potential_Savings_Transport
+    - Potential_Savings_Eating_Out
+    - Potential_Savings_Entertainment
+    - Potential_Savings_Utilities
+    - Potential_Savings_Healthcare
+    - Potential_Savings_Education
+    - Potential_Savings_Miscellaneous

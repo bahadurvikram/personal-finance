@@ -1,5 +1,5 @@
 """
-This is a boilerplate test file for pipeline 'data_science'
+This is a boilerplate test file for pipeline 'lgbm_regression'
 generated using Kedro 0.19.10.
 Please add your pipeline tests here.
 

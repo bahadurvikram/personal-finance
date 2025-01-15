@@ -4,4 +4,52 @@ personal-finance:
 
 data_with_normalization:
   type: pandas.CSVDataset
-  filepath: data/04_feature/normalized_data.csv
+  filepath: data/04_feature/normalized_encoded_data.csv
+data_normalized_type_categorised:
+  type: pickle.PickleDataset
+  filepath: data/04_feature/normalized_type_categorized_data.pickle
+data_targets:
+  type: pandas.CSVDataset
+  filepath: data/04_feature/target_data.csv
+
+
+#using datasets via factories
+"{subtype}_modelling_pipeline.regressor":
+  type: pickle.PickleDataset
+  filepath: data/06_models/regressor_{subtype}.pickle
+
+
+"{subtype}_modelling_pipeline.linear_data_and_predictions_plot":
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/linear_data_and_predictions_plot_{subtype}.png
+  save_args:
+    format: png
+  metadata:
+    kedro-viz:
+      layer: reporting
+
+"{subtype}_xgboost_pipeline.xgboost_regressor":
+  type: pickle.PickleDataset
+  filepath: data/06_models/xgboost_regressor_{subtype}.pickle
+
+"{subtype}_xgboost_pipeline.xgboost_data_and_predictions_plot":
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/xgboost_data_and_predictions_plot_{subtype}.png
+  save_args:
+    format: png
+  metadata:
+    kedro-viz:
+      layer: reporting
+
+"{subtype}_lgbm_pipeline.lgbm_regressor":
+  type: pickle.PickleDataset
+  filepath: data/06_models/lgbm_regressor_{subtype}.pickle
+
+"{subtype}_lgbm_pipeline.lgbm_data_and_predictions_plot":
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/lgbm_data_and_predictions_plot_{subtype}.png
+  save_args:
+    format: png
+  metadata:
+    kedro-viz:
+      layer: reporting

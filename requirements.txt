@@ -7,4 +7,6 @@ notebook
 scikit-learn~=1.5.1
 matplotlib
 seaborn
+xgboost
+lightgbm
 setuptools; python_version >= "3.12"

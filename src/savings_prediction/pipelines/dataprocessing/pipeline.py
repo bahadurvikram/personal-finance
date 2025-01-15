@@ -4,20 +4,25 @@ generated using Kedro 0.19.10
 """
 
 from kedro.pipeline import Pipeline, pipeline, node
-from .nodes import one_hot_encoding, features_normalization
+from .nodes import features_processing, features_aggregator
 
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
         node(
-            func=one_hot_encoding,
+            func=features_processing,
             inputs=["personal-finance", "params:col_options"],
-            outputs="data_with_one_hot_encoding",
-            name="handle_category_fields",
+            outputs={
+                    "one_hot_encoded_data": "one_hot_encoded_data",
+                    "normalized_data": "normalized_data",
+                    "categorised_data": "categorised_data",
+                    "data_targets": "data_targets",
+                },
+            name="handle_features_processing",
         ),
         node(
-            func=features_normalization,
-            inputs=["data_with_one_hot_encoding", "params:col_options"],
-            outputs="data_with_normalization",
-            name="handle_normalization",
+            func=features_aggregator,
+            inputs=["one_hot_encoded_data", "normalized_data", "categorised_data"],
+            outputs=["data_with_normalization","data_normalized_type_categorised"],
+            name="handle_data_aggregation",
         ),
     ])
