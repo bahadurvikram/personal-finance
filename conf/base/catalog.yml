@@ -2,6 +2,10 @@ personal-finance:
   type: pandas.CSVDataset
   filepath: data/01_raw/data.csv
 
+results_dataframe:
+  type: pandas.CSVDataset
+  filepath: data/08_reporting/results.csv
+
 data_with_normalization:
   type: pandas.CSVDataset
   filepath: data/04_feature/normalized_encoded_data.csv
@@ -28,6 +32,11 @@ data_targets:
     kedro-viz:
       layer: reporting
 
+"{subtype}_modelling_pipeline.linear_model_metrics":
+  type: pandas.CSVDataset
+  filepath: data/08_reporting/linear_model_metrics_{subtype}.csv
+
+
 "{subtype}_xgboost_pipeline.xgboost_regressor":
   type: pickle.PickleDataset
   filepath: data/06_models/xgboost_regressor_{subtype}.pickle
@@ -41,6 +50,10 @@ data_targets:
     kedro-viz:
       layer: reporting
 
+"{subtype}_xgboost_pipeline.xgboost_model_metrics":
+  type: pandas.CSVDataset
+  filepath: data/08_reporting/xgboost_model_metrics_{subtype}.csv
+
 "{subtype}_lgbm_pipeline.lgbm_regressor":
   type: pickle.PickleDataset
   filepath: data/06_models/lgbm_regressor_{subtype}.pickle
@@ -53,3 +66,6 @@ data_targets:
   metadata:
     kedro-viz:
       layer: reporting
+"{subtype}_lgbm_pipeline.lgbm_model_metrics":
+  type: pandas.CSVDataset
+  filepath: data/08_reporting/lgbm_model_metrics_{subtype}.csv

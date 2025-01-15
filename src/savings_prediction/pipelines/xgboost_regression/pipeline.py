@@ -32,7 +32,7 @@ def create_pipeline(**kwargs) -> Pipeline:
         node(
             func=evaluate_model,
             inputs=["xgboost_regressor", "X_test", "y_test"],
-            outputs=["model_metrics","xgboost_data_and_predictions_plot"],
+            outputs=["xgboost_model_metrics","xgboost_data_and_predictions_plot"],
             name="evaluate_model_node",
         ),
     ])

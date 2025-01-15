@@ -3,6 +3,7 @@ This is a boilerplate pipeline 'linear_regression'
 generated using Kedro 0.19.10
 """
 from kedro.pipeline import Pipeline, pipeline, node
+
 from .nodes import evaluate_model, train_model, split_data
 
 def create_pipeline(**kwargs) -> Pipeline:
@@ -23,7 +24,7 @@ def create_pipeline(**kwargs) -> Pipeline:
         node(
             func=evaluate_model,
             inputs=["regressor", "X_test", "y_test"],
-            outputs=["model_metrics","linear_data_and_predictions_plot"],
+            outputs=["linear_model_metrics","linear_data_and_predictions_plot"],
             name="evaluate_model_node",
         ),
     ])

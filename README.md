@@ -128,6 +128,9 @@ kedro catalog rank
 kedro catalog resolve
 kedro  viz --pipeline <pipelinename> --port 4146
 ```
+## Results
+[Download the CSV file here](data/08_reporting/linear_model_metrics_target1.csv.csv)
+
 ## Few observations
 * Namespaces are nice feature to scope pipeline parameters parametrized or non-parameterized.
 * Dynamic datasets in out case help to reduce number of statements in catalog.yml
