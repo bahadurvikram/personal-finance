@@ -1,0 +1,4 @@
+Metric,Value
+model_name,LinearRegression
+r2_score,0.7365799210174007
+mean_squared_error,323128.43455909047

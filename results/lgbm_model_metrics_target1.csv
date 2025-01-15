@@ -1,0 +1,4 @@
+Metric,Value
+model_name,LGBMRegressor
+r2_score,0.6261066873623076
+mean_squared_error,458642.1857868731

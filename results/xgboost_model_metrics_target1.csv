@@ -1,0 +1,4 @@
+Metric,Value
+model_name,XGBRegressor
+r2_score,0.6313550239526964
+mean_squared_error,452204.23013428383
