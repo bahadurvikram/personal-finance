@@ -10,30 +10,34 @@ Take a look at the [Kedro documentation](https://docs.kedro.org) to get started.
 
 ## How the project configured
 
-We followed steps to set up the project:
+We followed below steps to set up the project:
+*(Chose the suitable local drive location)*
+  
+  * **Creating the kedro project**
 
-* Chose the local drive location and followed
 ```commandline
-python -m venv venv --create virtual enviornment
-source venv/bin/activate --activate enviornment
-git config –list --check git setup
-kedro info # validate if kedro is there
-pip install kedro --install kedro
-kedro info -- validate now kedro is there
+python -m venv venv                 --create virtual enviornment
+source venv/bin/activate            --activate enviornment
+git config –list                    --check git setup
+kedro info                          --validate if kedro is there
+pip install kedro                   --install kedro
+kedro info                          --validate now kedro is there
 kedro new
-	name – savings prediction --it creates project folder structure
+	name – savings prediction   --it creates project folder structure
 cd savings-prediction
 ```
+* **Applying the dependencies**
 
-Edit requiremnts.txt to add
-* matplotlib
-* seaborn
-* xgboost
-* lightgbm
+  Edit requirements.txt to add following dependencies
+  * matplotlib
+  * seaborn
+  * xgboost
+  * lightgbm
 ```commandline
 pip install -r requirements.txt
 
 ```
+* **Proving data to kedro**
 
 Manually download the data from kaggle source and copy to folder data/01_raw.
 Define new entry into catalog.yml as
@@ -41,10 +45,15 @@ Define new entry into catalog.yml as
 
 ```commandline
 kedro run --run in terminal
+```
+* **Going to Jupyter from kedro**
+```commandline
 kedro jupyter notebook --run in separate terminal
 ```
 Jupyter notebook on browser with loading the dataset using catalog
 ![img.png](img/jupyter.png)
+
+* **Pushing everything to GitHub**
 
 Lets push the initial code to git, for this we have create repository in our git account
 ```commandline
@@ -57,10 +66,12 @@ git remote -v
 git push -u origin main
 
 ```
+* 
+  * Make sure your results can be reproduced by following a [data engineering convention](https://docs.kedro.org/en/stable/faq/faq.html#what-is-data-engineering-convention)
+  * Don't commit data to your repository
+  * Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
+
 ![img.png](img/github.png)
-* Make sure your results can be reproduced by following a [data engineering convention](https://docs.kedro.org/en/stable/faq/faq.html#what-is-data-engineering-convention)
-* Don't commit data to your repository
-* Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
 
 ## Problem statement
 Dataset contains detailed financial and demographic data for 20,000 individuals, focusing on income, expenses, and potential savings across various categories. The data aims to provide insights into personal financial management and spending patterns.
@@ -105,13 +116,6 @@ kedro pipeline create lgbm_regression
 ```
 ![img.png](img/lgbm_regression.png)
 
-Declare any dependencies in `requirements.txt` for `pip` installation.
-
-To install them, run:
-
-```
-pip install -r requirements.txt
-```
 
 ## Important kedro commands
 ```commandline
@@ -129,10 +133,19 @@ kedro catalog resolve
 kedro  viz --pipeline <pipelinename> --port 4146
 ```
 ## Results
-[Download the CSV file here](results/linear_model_metrics_target1.csv)
+Comparing models performances for one of target variable ***Potential_Savings_Groceries***
 
-## Few observations
+| Model Name             | Score Result                                            | Test Data Comparison                                              |
+|------------------------|---------------------------------------------------------|-------------------------------------------------------------------|
+| ***LinearRegression*** | [CSV file here](results/linear_model_metrics_target1.csv) | ![img.png](results/linear_data_and_predictions_plot_target1.png)  |
+| ***XGBoost***          | [CSV file here](results/xgboost_model_metrics_target1.csv) | ![img.png](results/xgboost_data_and_predictions_plot_target1.png) |
+| ***LightGBM***         | [CSV file here](results/lgbm_model_metrics_target1.csv) | ![img.png](results/lgbm_data_and_predictions_plot_target1.png)    |
+
+It seems none of applied advance models enhance the prediction, its mostly because available data is very linearly attributed with target variable.  
+
+## Few observations about kedro
 * Namespaces are nice feature to scope pipeline parameters parametrized or non-parameterized.
+* Pipeline wrapper instantiate allows multiple instances of pipelines with static structure, with dynamic inputs/outputs/parameters.
 * Dynamic datasets in out case help to reduce number of statements in catalog.yml
 * Saving datasets in csv does not work well to preserve the data types, bette to use pickle.
 * If kedro does not find pipeline during run --pipeline, most probably there is python coding errors in node.py or pipeline.py and sum time inputs and outputs count mismatch
