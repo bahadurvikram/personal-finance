@@ -82,7 +82,7 @@ Our object is to predict the different savings as targets using regression analy
 
 ## Performing EDA
 We performed the EDA to understand the features and their relationships
-[EDA Reference](https://github.com/bahadurvikram/personal-finance/blob/main/notebooks/EDA.ipynb){:target="_blank"}
+[EDA Reference](https://github.com/bahadurvikram/personal-finance/blob/main/notebooks/EDA.ipynb{:target="_blank"})
 
 ## Defining kedro pipelines
 ```commandline
