@@ -37,7 +37,7 @@ cd savings-prediction
 pip install -r requirements.txt
 
 ```
-* **Proving data to kedro**
+* **Providing data to kedro**
 
 Manually download the data from kaggle source and copy to folder data/01_raw.
 Define new entry into catalog.yml as
